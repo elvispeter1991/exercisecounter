@@ -33,7 +33,10 @@ function calculateAngle(a, b, c) {
   
   // Start the camera
   async function startCamera() {
+
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    stream.getTracks()
+    .forEach(track => track.stop());
     videoElement.srcObject = stream;
     videoElement.play();
   }
